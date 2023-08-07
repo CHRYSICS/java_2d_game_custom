@@ -33,7 +33,6 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         // initialize the game state
         player = new Player();
         coins = populateCoins();
-
         // this timer will call the actionPerformed() method every DELAY ms
         timer = new Timer(DELAY, this);
         timer.start();
@@ -50,7 +49,10 @@ public class Board extends JPanel implements ActionListener, KeyListener {
 
         // give the player points for collecting coins
         collectCoins();
-
+		if (coins.size() == 0) 
+		{
+			coins = populateCoins();
+		};
         // calling repaint() will trigger paintComponent() to run again,
         // which will refresh/redraw the graphics.
         repaint();
